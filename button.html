@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UTC Time Converter</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>Time</h1>
+    
+    <label for="input-time">Start Time:</label>
+    <input type="time" id="input-time">
+    <button onclick="fillCurrentTime()">Current Time</button>
+    
+    <p id="utc-time"></p>
+    
+    <script>
+      function fillCurrentTime() {
+        var now = new Date();
+        var utc = now.toISOString().substr(11, 5);
+        document.getElementById("input-time").value = utc;
+      }
+      
+      function convertToUTC() {
+        var input = document.getElementById("input-time").value;
+        var date = new Date("1970-01-01T" + input + "Z");
+        var utc = date.toISOString().substr(11, 5);
+        document.getElementById("utc-time").innerHTML = "UTC time: " + utc;
+      }
+    </script>
+  </body>
+</html>
